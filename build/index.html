@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .bg-mobile {
+        background-image: url(./images/bg-main-mobile.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      @media screen and (min-width: 1024px) {
+        .bg-mobile {
+          /* background-color: aqua; */
+          background-image: url(./images/bg-main-desktop.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+    </style>
+  </head>
+  <body class="lg:flex">
+    <header
+      class="w-full h-full pt-12 pb-12 lg:pb-0 lg:h-full lg:w-1/3 bg-mobile xl:pt-28"
+    >
+      <div class="lg:hidden">
+        <div class="ml-20 mr-5 sm:ml-60 md:ml-96 lg:-z-10">
+          <img src="./images/bg-card-back.png" alt="" class="" />
+        </div>
+        <div class="relative lg:static">
+          <div
+            class="absolute -top-16 lg:static pl-6 sm:-top-24 sm:ml-36 md:ml-72"
+          >
+            <div class="relative mr-20 lg:static">
+              <img src="./images/bg-card-front.png" alt="" class="" />
+              <div class="absolute top-5 left-5 lg:static">
+                <div class="flex flex-col gap-6">
+                  <div>
+                    <img src="./images/card-logo.svg" alt="" class="w-12" />
+                  </div>
+                  <div class="grow">
+                    <div class="text-white text-xl">0000 0000 0000 0000</div>
+                    <div class="flex">
+                      <div class="text-white text-xs">JANE APPLESEED</div>
+                      <div class="text-xs text-white">00/00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For large screen -->
+      <div class="hidden lg:block pb-40">
+        <div class="-mr-28 ml-40 relative">
+          <img src="./images/bg-card-front.png" alt="" />
+        </div>
+        <div class="ml-64 -mr-52 mt-7">
+          <img src="./images/bg-card-back.png" alt="" />
+        </div>
+      </div>
+    </header>
+    <main
+      class="w-full h-full lg:max-w-lg mt-36 pl-10 pr-10 pb-28 lg:mt-0 lg:ml-64 lg:pt-16 lg:pb-0 xl:pt-36"
+    >
+      <form action="" class="contain main">
+        <div class="flex flex-col parent">
+          <label for="name">CARDHOLDER NAME</label>
+          <input
+            type="text"
+            name="CardName"
+            id="name"
+            placeholder="e.g Jane Appleseed"
+            class="card card-name border-2 pl-2 pt-2 pb-2 w-full rounded-sm mt-2 text-xs"
+          />
+          <p class="text-red-500 text-xs hidden">Can't be blank</p>
+        </div>
+        <div class="flex flex-col mt-5 parent">
+          <label for="card number">CARD NUMBER</label>
+          <input
+            type=""
+            name="cardNum"
+            id="card number"
+            placeholder="e.g. 1234 5678 9123 0000"
+            min="0"
+            pattern="(\d{4} ?)+"
+            class="card card-num border-2 pl-2 pt-2 pb-2 w-full rounded-sm mt-2 text-xs"
+          />
+          <p class="text-red-500 text-xs hidden h-5">Can't be blank</p>
+        </div>
+        <div class="flex flex-col mt-5">
+          <div class="flex">
+            <div class="max-w-min">
+              <label for="exp date" class="text-xs">EXP. DATE</label>
+              <input
+                type="number"
+                name="ExpDate"
+                id="exp date"
+                placeholder="MM"
+                min="0"
+                maxlength="99"
+                pattern="\d{1,2}"
+                title="Please enter a two-digit number"
+                class="card card-mm border-2 pl-2 pt-2 pb-2 rounded-lg w-16 sm:w-20 md:w-28 mt-2"
+              />
+              <p class="text-red-500 text-xs hidden">Can't be blank</p>
+            </div>
+            <div class="max-w-min ml-2">
+              <label for="mm/yy" class="text-xs">(MM/YY)</label>
+              <input
+                type="number"
+                name="MM"
+                id="mm/yy"
+                placeholder="YY"
+                min="0"
+                required
+                class="card card-yy border-2 pl-2 pt-2 pb-2 rounded-lg w-16 sm:w-20 md:w-28 mt-2"
+              />
+              <p class="text-red-500 text-xs hidden">Can't be blank</p>
+            </div>
+            <div class="ml-2 w-full">
+              <label for="cvc" class="text-xs">CVC</label>
+              <input
+                type="number"
+                name="CVC"
+                id="cvc"
+                placeholder="e.g 123"
+                min="0"
+                required
+                class="card card-cvc border-2 pl-2 pt-2 pb-2 rounded-lg w-full mt-2"
+              />
+              <p class="text-red-500 text-xs hidden">Can't be blank</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <button
+            type="submit"
+            class="btn-submit border-none rounded-md text-white border-black w-full bg-purple-950 pt-3 pb-3"
+          >
+            Confirm
+          </button>
+        </div>
+      </form>
+
+      <!-- Thank you page -->
+      <div class="hidden flex-col items-center complete">
+        <div>
+          <img src="./images/icon-complete.svg" alt="" />
+        </div>
+        <h3 class="text-3xl font-medium mt-7 tracking-wide">THANK YOU!</h3>
+        <p class="mt-5 text-slate-200 font-semibold">
+          We've added your card details
+        </p>
+        <button
+          class="btn-continue border-none rounded-md text-white border-black w-full bg-purple-950 pt-3 pb-3 mt-7 max-w-sm"
+        >
+          Continue
+        </button>
+        <div class="w-72 mr-5 text-xs mt-32">
+          <div>
+            Challenge by
+            <a
+              href="https://www.frontendmentor.io?ref=challenge"
+              target="_blank"
+              >Frontend Mentor</a
+            >. Coded by <a href="" class="text-purple-950"> Devvictor</a>.
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
