@@ -7,6 +7,11 @@ const cardYY = document.querySelector('.card-yy')
 const cardCVC = document.querySelector('.card-cvc')
 const mainEl = document.querySelector('.main')
 const completeEl = document.querySelector('.complete')
+const filledName = document.querySelector('.filled-name')
+const filledNum = document.querySelector('.filled-number')
+const filledCVC = document.querySelector('.filled-cvc')
+const filledMM = document.querySelector('.filled-mm')
+const filledYY = document.querySelector('.filled-yy')
 
 const btnSubmit = document.querySelector('.btn-submit')
 const btnContinue = document.querySelector('.btn-continue')
@@ -32,6 +37,15 @@ const clearInputField = function () {
   cardYY.value = ''
   cardCVC.value = ''
 }
+
+const clearCompletedInput = function () {
+  filledCVC.textContent = '000'
+  filledName.textContent = 'JANE APPLESEED'
+  filledNum.textContent = '0000 0000 0000 0000'
+  filledMM.textContent = '00'
+  filledYY.textContent = '00'
+}
+
 const checkEmptyInputs = function () {
   if (
     cardName.value === '' ||
@@ -99,6 +113,12 @@ document.querySelector('.contain').addEventListener('click', function (e) {
     })
   }
 
+  if (clicked.classList.contains('card-num')) {
+    clicked.addEventListener('input', function () {
+      limitInputLength(clicked, 19)
+    })
+  }
+
   clicked.classList.contains('card-cvc') &&
     clicked.addEventListener('input', function () {
       limitInputLength(clicked, 3)
@@ -111,6 +131,11 @@ btnSubmit.addEventListener('click', function (e) {
     mainEl.classList.add('hidden')
     completeEl.classList.remove('hidden')
     completeEl.classList.add('flex')
+    filledCVC.textContent = cardCVC.value
+    filledName.textContent = cardName.value
+    filledNum.textContent = cardNum.value
+    filledMM.textContent = cardMM.value
+    filledYY.textContent = cardYY.value
     clearInputField()
   }
 })
@@ -118,4 +143,5 @@ btnSubmit.addEventListener('click', function (e) {
 btnContinue.addEventListener('click', function (e) {
   mainEl.classList.remove('hidden')
   completeEl.classList.add('hidden')
+  clearCompletedInput()
 })

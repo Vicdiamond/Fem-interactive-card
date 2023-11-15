@@ -34,8 +34,11 @@
       class="w-full h-full pt-12 pb-12 lg:pb-0 lg:h-full lg:w-1/3 bg-mobile xl:pt-28"
     >
       <div class="lg:hidden">
-        <div class="ml-20 mr-5 sm:ml-60 md:ml-96 lg:-z-10">
+        <div class="ml-20 mr-5 sm:ml-60 md:ml-96 lg:-z-10 relative">
           <img src="./images/bg-card-back.png" alt="" class="" />
+          <div class="absolute top-16 right-16 sm:top-24">
+            <p class="text-white text-xl filled-cvc">000</p>
+          </div>
         </div>
         <div class="relative lg:static">
           <div
@@ -49,10 +52,19 @@
                     <img src="./images/card-logo.svg" alt="" class="w-12" />
                   </div>
                   <div class="grow">
-                    <div class="text-white text-xl">0000 0000 0000 0000</div>
+                    <div class="text-white text-xl">
+                      <p class="filled-number">0000 0000 0000 0000</p>
+                    </div>
                     <div class="flex">
-                      <div class="text-white text-xs">JANE APPLESEED</div>
-                      <div class="text-xs text-white">00/00</div>
+                      <div class="text-white text-xs filled-name capitalize">
+                        JANE APPLESEED
+                      </div>
+                      <div class="text-xs text-white ml-20">
+                        <span class="filled-mm">00</span>/<span
+                          class="filled-yy"
+                          >00</span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
