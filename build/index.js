@@ -59,12 +59,17 @@ const checkEmptyInputs = function () {
     return true
   }
 }
+
 const limitInputLength = function (input, maxLength) {
   const inputValue = input.value.toString()
 
   if (inputValue.length > maxLength) {
     input.value = inputValue.slice(0, maxLength)
   }
+}
+
+const addDetailsToCard = function (el, className, filledEl) {
+  el.classList.contains(className) ? (filledEl.textContent = el.value) : ''
 }
 
 // Event listeners
@@ -74,18 +79,32 @@ document.querySelector('.contain').addEventListener('click', function (e) {
   if (!clicked) return
 
   clicked.addEventListener('mouseout', function () {
+    // Check for empty value
     if (clicked.value === '') {
       e.target.classList.add('border-red-500')
       clicked.nextElementSibling.classList.remove('hidden')
     } else {
+      // When values are filled
+
       e.target.classList.remove('border-red-500')
       clicked.nextElementSibling.classList.add('hidden')
+
+      //   Dynamically adding the details to the card
+
+      addDetailsToCard(clicked, 'card-name', filledName)
+
+      addDetailsToCard(clicked, 'card-num', filledNum)
+
+      addDetailsToCard(clicked, 'card-cvc', filledCVC)
+
+      addDetailsToCard(clicked, 'card-mm', filledMM)
+
+      addDetailsToCard(clicked, 'card-yy', filledYY)
     }
 
-    // for the card number
+    // For the card number
     if (clicked.classList.contains('card-num')) {
       const clickedValue = clicked.value
-      console.log(clickedValue)
       const containsAlphabetChar = containsAlphabet(clickedValue)
       if (containsAlphabetChar) {
         clicked.nextElementSibling.textContent = 'Wrong format, numbers only'
@@ -131,11 +150,6 @@ btnSubmit.addEventListener('click', function (e) {
     mainEl.classList.add('hidden')
     completeEl.classList.remove('hidden')
     completeEl.classList.add('flex')
-    filledCVC.textContent = cardCVC.value
-    filledName.textContent = cardName.value
-    filledNum.textContent = cardNum.value
-    filledMM.textContent = cardMM.value
-    filledYY.textContent = cardYY.value
     clearInputField()
   }
 })
